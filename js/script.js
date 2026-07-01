@@ -64,3 +64,13 @@ window.onclick = (e) => {
     itemDetailModal.style.display = "none";
   }
 };
+
+// hide hero content on scroll
+window.addEventListener("scroll", () => {
+  const hero = document.querySelector(".hero");
+  if (window.scrollY > 50) {
+    hero.classList.add("scrolled");
+  } else {
+    hero.classList.remove("scrolled");
+  }
+});

@@ -22,9 +22,8 @@ body {
   color: #fff;
 }
 
-/* =======================
-   NAVBAR
-======================= */
+/* navbar */
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -121,9 +120,8 @@ body {
   color: var(--bg);
 }
 
-/* =======================
-   HERO Section
-======================= */
+/* hero section */
+
 .hero {
   min-height: 100vh;
   display: flex;
@@ -133,7 +131,8 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  mask-image: linear-gradient(rgba(0, 0, 0, 1) 85%, rgba(0, 0, 0, 0));
+  -webkit-mask-image: linear-gradient(rgba(0, 0, 0, 1) 75%, rgba(0, 0, 0, 0));
+  mask-image: linear-gradient(rgba(0, 0, 0, 1) 75%, rgba(0, 0, 0, 0));
 }
 
 .hero::before {
@@ -144,16 +143,27 @@ body {
 }
 
 .hero .content {
-  position: relative;
-  z-index: 1;
   padding: 1.4rem 7%;
   width: 100%;
   text-align: center;
+  position: relative;
+  top: 70px;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
 }
 
 .hero .content h1 {
   font-size: 4.5rem;
   line-height: 1.2;
+}
+
+.hero.scrolled .content {
+  opacity: 0;
+  transform: translateY(-30px);
 }
 
 .highlight {
@@ -180,9 +190,8 @@ body {
   transform: translateY(-3px);
 }
 
-/* =======================
-   SECTION GLOBAL
-======================= */
+/* section global */
+
 .about,
 .menu,
 .products,
@@ -281,9 +290,7 @@ body {
   font-weight: bold;
 }
 
-/* =======================
-   ABOUT
-======================= */
+/* about section */
 .about .row {
   display: flex;
   align-items: center;
@@ -298,7 +305,7 @@ body {
 .about-img img {
   width: 100%;
   border-radius: 10px;
-  mask-image: url(../images/menu/coffe-beans.png);
+  background-image: url("../images/menu/splash.png");
   mask-size: 50%;
   mask-repeat: no-repeat;
   mask-position: center;
@@ -319,9 +326,7 @@ body {
   margin-bottom: 1rem;
 }
 
-/* =======================
-   MENU
-======================= */
+/* menu */
 .menu {
   text-align: center;
 }
@@ -525,9 +530,7 @@ footer .credit a {
   padding: 1rem 1.6rem;
 }
 
-/* =======================
-   TABLET
-======================= */
+/* tablet */
 @media (max-width: 768px) {
   html {
     font-size: 75%;
@@ -722,9 +725,12 @@ footer .credit a {
   cursor: pointer;
 }
 
-/* =======================
-   MOBILE
-======================= */
+.form-container .checkout-button.disabled {
+  background-color: grey;
+  cursor: not-allowed;
+}
+
+/* mobile / hp */
 @media (max-width: 450px) {
   html {
     font-size: 55%;

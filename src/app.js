@@ -63,6 +63,49 @@ document.addEventListener("alpine:init", () => {
   });
 });
 
+// form validation
+
+const checkoutButton = document.querySelector("#checkout-button");
+
+checkoutButton.addEventListener("click", function (e) {
+  e.preventDefault();
+
+  console.log("BUTTON CLICK");
+
+  const form = document.querySelector("#checkoutForm");
+
+  const formData = new FormData(form);
+
+  // Simpan hasil form ke variabel
+  const objData = Object.fromEntries(formData.entries());
+
+  console.log(objData);
+
+  // Buat pesan WhatsApp
+  const message = formatMessage(objData);
+
+  window.open(
+    `https://wa.me/6287722590815?text=${encodeURIComponent(message)}`,
+  );
+});
+
+// format pesan ke whatsapp
+const formatMessage = (obj) => {
+  return `Data Customer
+Nama: ${obj.name}
+Email: ${obj.email}
+No. HP: ${obj.phone}
+
+Data Pesanan
+${JSON.parse(obj.items)
+  .map((item) => `${item.name} (${item.quantity} x ${rupiah(item.total)})`)
+  .join("\n")}
+
+TOTAL: ${rupiah(obj.total)}
+
+TERIMA KASIH`;
+};
+
 // konversi ke rupiah
 const rupiah = (number) => {
   return new Intl.NumberFormat("id-ID", {
